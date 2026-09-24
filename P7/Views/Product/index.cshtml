@@ -1,0 +1,29 @@
+@model IEnumerable<P7.Models.Product>
+@using System.Globalization
+
+<h1>Product Catalog</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td><img src="@product.ImageUrl" alt="@product.Name" style="width: 100px; height: 75px; object-fit: cover;" /></td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price.ToString("C0", CultureInfo.GetCultureInfo("en-IN"))</td>
+                <td>@product.Category</td>
+            </tr>
+        }
+    </tbody>
+</table>
